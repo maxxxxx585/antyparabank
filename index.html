@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wolny od Długu | Analiza Umów Parabanków</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0b1120;
+  --navy2:   #111827;
+  --navy3:   #1a2540;
+  --blue:    #1e3a8a;
+  --accent:  #2563eb;
+  --gold:    #f59e0b;
+  --gold2:   #fbbf24;
+  --white:   #f8fafc;
+  --muted:   #94a3b8;
+  --success: #10b981;
+  --red:     #ef4444;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  padding: 1.1rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(11,17,32,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(37,99,235,.15);
+  transition: padding .3s;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: .7rem;
+}
+.nav-logo-icon {
+  width: 34px; height: 34px; border-radius: 6px;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.nav-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--white);
+}
+.nav-logo-text span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: .78rem; letter-spacing: .08em;
+  color: var(--muted); text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  padding: .6rem 1.6rem;
+  background: var(--gold); color: var(--navy);
+  font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+  border: none; cursor: pointer; text-decoration: none;
+  border-radius: 4px;
+  transition: background .2s, transform .2s;
+}
+.nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 8rem 3rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 70% 50%, rgba(37,99,235,.1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(245,158,11,.06) 0%, transparent 60%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 760px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(245,158,11,.12);
+  border: 1px solid rgba(245,158,11,.3);
+  padding: .4rem 1rem; border-radius: 100px;
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+  animation: fadeUp .7s ease both;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700; line-height: 1.1;
+  color: var(--white); margin-bottom: 1.5rem;
+  animation: fadeUp .7s .1s ease both;
+}
+.hero-title .highlight {
+  color: var(--gold);
+  font-style: italic;
+}
+.hero-title .strike {
+  position: relative; color: var(--muted);
+}
+.hero-title .strike::after {
+  content: '';
+  position: absolute; left: 0; right: 0;
+  top: 50%; height: 3px;
+  background: var(--red);
+  transform: rotate(-2deg);
+}
+.hero-sub {
+  font-size: 1.05rem; line-height: 1.8; color: var(--muted);
+  max-width: 580px; margin-bottom: 2.5rem;
+  animation: fadeUp .7s .2s ease both;
+}
+.hero-sub strong { color: var(--white); }
+
+.hero-proof {
+  display: flex; align-items: center; gap: 2rem;
+  margin-bottom: 2.5rem;
+  animation: fadeUp .7s .3s ease both;
+  flex-wrap: wrap;
+}
+.proof-item {
+  display: flex; align-items: center; gap: .5rem;
+  font-size: .82rem; color: var(--muted);
+}
+.proof-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
+.proof-item strong { color: var(--white); }
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .7s .4s ease both; }
+.btn-gold {
+  padding: 1rem 2.5rem;
+  background: var(--gold); color: var(--navy);
+  font-size: .85rem; font-weight: 700; letter-spacing: .06em;
+  border: none; cursor: pointer; text-decoration: none;
+  border-radius: 6px;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  display: inline-block;
+  box-shadow: 0 4px 24px rgba(245,158,11,.3);
+}
+.btn-gold:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245,158,11,.4); }
+.btn-ghost {
+  padding: 1rem 2.5rem;
+  background: transparent; color: var(--white);
+  font-size: .85rem; font-weight: 500;
+  border: 1.5px solid rgba(248,250,252,.2);
+  cursor: pointer; text-decoration: none;
+  border-radius: 6px;
+  transition: all .2s; display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,.05); }
+
+.hero-note {
+  margin-top: 1.2rem;
+  font-size: .75rem; color: var(--muted);
+  animation: fadeUp .7s .5s ease both;
+}
+.hero-note span { color: var(--success); }
+
+/* TRUST BAR */
+.trust-bar {
+  background: var(--navy3);
+  padding: 1.2rem 3rem;
+  display: flex; align-items: center; justify-content: center;
+  gap: 3rem; flex-wrap: wrap;
+  border-top: 1px solid rgba(37,99,235,.15);
+  border-bottom: 1px solid rgba(37,99,235,.15);
+}
+.trust-item {
+  display: flex; align-items: center; gap: .6rem;
+  font-size: .8rem; color: var(--muted);
+}
+.trust-item strong { color: var(--white); font-size: .9rem; }
+.trust-divider { width: 1px; height: 24px; background: rgba(255,255,255,.08); }
+
+/* SECTIONS */
+section { padding: 6rem 3rem; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+}
+.section-tag::before { content: ''; width: 24px; height: 1.5px; background: var(--accent); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; color: var(--white);
+  line-height: 1.15; margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* PROBLEM */
+#problem { background: var(--navy2); }
+.problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.problem-text p { font-size: .95rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.2rem; }
+.problem-text strong { color: var(--white); }
+.problem-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .8rem; }
+.problem-item {
+  display: flex; align-items: flex-start; gap: .8rem;
+  padding: .9rem 1.2rem;
+  background: rgba(239,68,68,.06);
+  border: 1px solid rgba(239,68,68,.15);
+  border-left: 3px solid var(--red);
+  border-radius: 4px;
+  font-size: .85rem; color: var(--muted); line-height: 1.5;
+}
+.problem-item strong { color: var(--white); display: block; margin-bottom: .2rem; }
+
+.problem-visual {
+  background: var(--navy3);
+  border: 1px solid rgba(37,99,235,.2);
+  border-radius: 12px;
+  padding: 2.5rem;
+  position: relative; overflow: hidden;
+}
+.problem-visual::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+}
+.pv-title { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+.debt-example { margin-bottom: 1.5rem; }
+.debt-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .7rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: .88rem;
+}
+.debt-label { color: var(--muted); }
+.debt-val { font-weight: 600; }
+.debt-val.bad { color: var(--red); }
+.debt-val.good { color: var(--success); }
+.debt-val.neutral { color: var(--white); }
+.debt-saving {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: rgba(16,185,129,.08);
+  border: 1px solid rgba(16,185,129,.2);
+  border-radius: 6px;
+  text-align: center;
+}
+.saving-label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--success); margin-bottom: .3rem; }
+.saving-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; font-weight: 700; color: var(--success);
+  line-height: 1;
+}
+.saving-sub { font-size: .75rem; color: var(--muted); margin-top: .3rem; }
+
+/* HOW IT WORKS */
+#jak-dzialamy { background: var(--navy); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3.5rem; position: relative; }
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 2.4rem; left: 8%; right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(37,99,235,.4), transparent);
+}
+.step-card {
+  background: var(--navy2);
+  border: 1px solid rgba(37,99,235,.15);
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: border-color .3s, transform .3s;
+}
+.step-card:hover { border-color: rgba(37,99,235,.5); transform: translateY(-4px); }
+.step-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; font-weight: 700; color: var(--accent);
+  margin: 0 auto 1.2rem;
+  position: relative; z-index: 1;
+}
+.step-icon { font-size: 1.5rem; margin-bottom: .8rem; }
+.step-title { font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+.step-text { font-size: .8rem; line-height: 1.65; color: var(--muted); }
+
+/* FOR WHOM */
+#dla-kogo { background: var(--navy2); }
+.forwhom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.forwhom-card {
+  background: var(--navy);
+  border: 1px solid rgba(37,99,235,.12);
+  border-radius: 10px;
+  padding: 1.8rem;
+  transition: border-color .3s;
+}
+.forwhom-card:hover { border-color: rgba(245,158,11,.4); }
+.fw-logo { font-size: 1.8rem; margin-bottom: 1rem; }
+.fw-name { font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+.fw-desc { font-size: .82rem; line-height: 1.65; color: var(--muted); }
+
+/* RESULTS */
+#wyniki { background: var(--navy); }
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.result-card {
+  background: var(--navy2);
+  border: 1px solid rgba(16,185,129,.15);
+  border-radius: 10px;
+  padding: 2rem;
+  position: relative; overflow: hidden;
+}
+.result-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--success), var(--accent));
+}
+.result-company { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.result-before { font-size: .82rem; color: var(--muted); margin-bottom: .3rem; }
+.result-before-val { font-size: 1.6rem; font-weight: 700; color: var(--red); text-decoration: line-through; opacity: .7; }
+.result-arrow { font-size: 1.2rem; margin: .5rem 0; }
+.result-after { font-size: .82rem; color: var(--muted); margin-bottom: .3rem; }
+.result-after-val { font-size: 2rem; font-weight: 700; color: var(--success); font-family: 'Playfair Display', serif; }
+.result-saving {
+  margin-top: 1rem; padding: .6rem;
+  background: rgba(16,185,129,.08); border-radius: 4px;
+  font-size: .78rem; color: var(--success); text-align: center;
+}
+
+.results-note { margin-top: 2rem; text-align: center; font-size: .78rem; color: var(--muted); }
+
+/* PRICING */
+#cennik { background: var(--navy2); }
+.pricing-box {
+  max-width: 600px; margin: 3rem auto 0;
+  background: var(--navy);
+  border: 1px solid rgba(245,158,11,.3);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.pricing-header {
+  background: linear-gradient(135deg, var(--blue), var(--navy3));
+  padding: 2.5rem; text-align: center;
+  border-bottom: 1px solid rgba(245,158,11,.2);
+}
+.pricing-tag { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+.pricing-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem; font-weight: 700; color: var(--white); line-height: 1;
+}
+.pricing-main span { font-size: 1.2rem; color: var(--gold); }
+.pricing-sub { font-size: .88rem; color: var(--muted); margin-top: .5rem; }
+.pricing-body { padding: 2.5rem; }
+.pricing-items { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+.pi {
+  display: flex; align-items: flex-start; gap: .8rem;
+  font-size: .88rem; color: var(--muted); line-height: 1.5;
+}
+.pi-check { color: var(--success); font-size: 1rem; margin-top: .1rem; flex-shrink: 0; }
+.pi strong { color: var(--white); }
+.pricing-cta { display: block; text-align: center; }
+
+/* FAQ */
+#faq { background: var(--navy); }
+.faq-list { max-width: 720px; margin: 3rem auto 0; display: flex; flex-direction: column; gap: 1rem; }
+.faq-item {
+  background: var(--navy2);
+  border: 1px solid rgba(37,99,235,.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 1.2rem 1.5rem;
+  font-size: .92rem; font-weight: 500; color: var(--white);
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-icon { font-size: .8rem; color: var(--muted); transition: transform .3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--gold); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .3s;
+  font-size: .85rem; line-height: 1.75; color: var(--muted);
+  padding: 0 1.5rem;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.2rem; }
+
+/* FORM */
+#formularz { background: var(--navy2); }
+.form-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.form-intro p { font-size: .92rem; line-height: 1.8; color: var(--muted); margin-top: 1rem; }
+.form-guarantees { margin-top: 2rem; display: flex; flex-direction: column; gap: .8rem; }
+.fg-item { display: flex; gap: .7rem; font-size: .83rem; color: var(--muted); align-items: center; }
+.fg-icon { font-size: 1rem; flex-shrink: 0; }
+
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fg label {
+  display: block; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .4rem;
+}
+.fg input, .fg select, .fg textarea {
+  width: 100%;
+  background: var(--navy);
+  border: 1px solid rgba(37,99,235,.2);
+  border-radius: 6px;
+  padding: .8rem 1rem;
+  color: var(--white); font-family: 'Inter', sans-serif; font-size: .9rem;
+  outline: none; transition: border-color .2s;
+  appearance: none;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); }
+.fg textarea { resize: vertical; min-height: 100px; }
+.fg select option { background: var(--navy2); }
+::placeholder { color: rgba(148,163,184,.4); }
+.btn-submit {
+  padding: 1rem 2.5rem;
+  background: var(--gold); color: var(--navy);
+  font-size: .88rem; font-weight: 700; letter-spacing: .06em;
+  border: none; cursor: pointer; border-radius: 6px;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 24px rgba(245,158,11,.3);
+}
+.btn-submit:hover { background: var(--gold2); transform: translateY(-2px); }
+.form-note { font-size: .72rem; color: var(--muted); margin-top: .5rem; }
+
+/* FOOTER */
+footer {
+  background: #070b14;
+  padding: 2rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(37,99,235,.1);
+}
+.footer-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700; color: rgba(248,250,252,.4);
+}
+.footer-logo-text span { color: rgba(245,158,11,.5); }
+footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
+
+/* ANIM */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  nav { padding: .9rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { padding: 6rem 1.5rem 4rem; }
+  section { padding: 4rem 1.5rem; }
+  .trust-bar { gap: 1.2rem; padding: 1rem 1.5rem; }
+  .trust-divider { display: none; }
+  .problem-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid::before { display: none; }
+  .forwhom-grid { grid-template-columns: 1fr 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .form-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: .5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">⚖️</div>
+    <div class="nav-logo-text">Wolny <span>od Długu</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#jak-dzialamy">Jak działamy</a></li>
+    <li><a href="#wyniki">Wyniki</a></li>
+    <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#formularz">Kontakt</a></li>
+  </ul>
+  <a href="#formularz" class="nav-cta">Bezpłatna analiza →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">⚖️ Analiza umów pożyczkowych · Bezpłatna konsultacja</div>
+    <h1 class="hero-title">
+      Masz dług<br>w <span class="highlight">parabanku?</span><br>
+      Możliwe że jesteś<br>winien znacznie <span class="highlight">mniej</span>
+    </h1>
+    <p class="hero-sub">
+      Parabanki masowo stosują <strong>niedozwolone zapisy w umowach</strong>. Analizujemy Twoją umowę i walczymy o zmniejszenie lub umorzenie długu. <strong>Płacisz tylko jeśli wygramy.</strong>
+    </p>
+    <div class="hero-proof">
+      <div class="proof-item"><div class="proof-dot"></div><strong>Zero opłat z góry</strong></div>
+      <div class="proof-item"><div class="proof-dot"></div><strong>Bezpłatna analiza umowy</strong></div>
+      <div class="proof-item"><div class="proof-dot"></div>Provident, Vivus, SKOK i inne</div>
+    </div>
+    <div class="hero-actions">
+      <a href="#formularz" class="btn-gold">Sprawdź swoją umowę za darmo →</a>
+      <a href="#jak-dzialamy" class="btn-ghost">Jak to działa</a>
+    </div>
+    <p class="hero-note"><span>✓</span> Bezpłatna analiza · <span>✓</span> Bez zobowiązań · <span>✓</span> Success fee — płacisz tylko gdy wygrasz</p>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar reveal">
+  <div class="trust-item">⚖️ <div><strong>Success fee</strong> — płacisz tylko gdy wygrasz</div></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">🔍 <div><strong>Bezpłatna</strong> analiza umowy</div></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">📄 <div>Pisma i wezwania do <strong>parabanku</strong></div></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">🏆 <div>Wieloletnie <strong>doświadczenie</strong></div></div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="problem-layout">
+    <div class="problem-text reveal">
+      <div class="section-tag">Problem</div>
+      <h2 class="section-title">Parabanki zarabiają<br>na <em>Twojej nieświadomości</em></h2>
+      <p>Większość umów pożyczkowych zawiera <strong>klauzule abuzywne</strong> — zapisy, które są niezgodne z prawem i mogą zostać zakwestionowane. Parabanki liczą na to, że tego nie sprawdzisz.</p>
+      <p>Wystarczy jeden błąd formalny, jedno przekroczenie limitu odsetek lub jedno nieuprawnione ubezpieczenie — i <strong>Twój dług może być znacznie niższy niż myślisz</strong>.</p>
+      <div class="problem-list">
+        <div class="problem-item">
+          <span>🚫</span>
+          <div><strong>Ukryte opłaty i prowizje</strong> Opłata "przygotowawcza" 3000 zł przy pożyczce 5000 zł — często niezgodna z prawem</div>
+        </div>
+        <div class="problem-item">
+          <span>🚫</span>
+          <div><strong>Odsetki przekraczające limit ustawowy</strong> Maksymalne odsetki są ściśle regulowane — wiele firm je przekracza</div>
+        </div>
+        <div class="problem-item">
+          <span>🚫</span>
+          <div><strong>Wymagane ubezpieczenia</strong> Dołączane "obowiązkowo" ubezpieczenia mogą być uznane za nieważne</div>
+        </div>
+        <div class="problem-item">
+          <span>🚫</span>
+          <div><strong>Błędy formalne w umowie</strong> Brak wymaganych prawem informacji może unieważnić całą umowę</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="problem-visual">
+        <div class="pv-title">Przykład rzeczywistego przypadku</div>
+        <div class="debt-example">
+          <div class="debt-row">
+            <span class="debt-label">Kwota pożyczki</span>
+            <span class="debt-val neutral">5 000 zł</span>
+          </div>
+          <div class="debt-row">
+            <span class="debt-label">Żądana kwota zwrotu</span>
+            <span class="debt-val bad">13 400 zł</span>
+          </div>
+          <div class="debt-row">
+            <span class="debt-label">Nielegalne opłaty</span>
+            <span class="debt-val bad">− 6 800 zł</span>
+          </div>
+          <div class="debt-row" style="border:none; padding-top:1rem;">
+            <span class="debt-label" style="font-weight:600; color:var(--white);">Rzeczywiste zobowiązanie</span>
+            <span class="debt-val good" style="font-size:1.3rem;">6 600 zł</span>
+          </div>
+        </div>
+        <div class="debt-saving">
+          <div class="saving-label">Oszczędność klienta</div>
+          <div class="saving-amount">6 800 zł</div>
+          <div class="saving-sub">dzięki analizie i pismu do parabanku</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JAK DZIAŁAMY -->
+<section id="jak-dzialamy">
+  <div class="reveal" style="text-align:center; max-width:560px; margin:0 auto 1rem;">
+    <div class="section-tag" style="justify-content:center;">Jak działamy</div>
+    <h2 class="section-title">Trzy kroki do <em>wolności od długu</em></h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">1</div>
+      <div class="step-icon">📋</div>
+      <div class="step-title">Wyślij umowę</div>
+      <div class="step-text">Wypełnij formularz i prześlij skan lub zdjęcie swojej umowy pożyczkowej. To zajmuje 2 minuty.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">2</div>
+      <div class="step-icon">🔍</div>
+      <div class="step-title">Bezpłatna analiza</div>
+      <div class="step-text">Dokładnie sprawdzamy każdy zapis umowy w poszukiwaniu klauzul abuzywnych i błędów formalnych.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">3</div>
+      <div class="step-icon">📝</div>
+      <div class="step-title">Pismo do parabanku</div>
+      <div class="step-text">Piszemy profesjonalne wezwanie do parabanku żądające korekty zadłużenia. Walczymy w Twoim imieniu.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">4</div>
+      <div class="step-icon">✅</div>
+      <div class="step-title">Płacisz gdy wygrasz</div>
+      <div class="step-text">Wynagrodzenie pobieramy wyłącznie jako procent od uzyskanej oszczędności. Zero ryzyka z Twojej strony.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DLA KOGO -->
+<section id="dla-kogo">
+  <div class="reveal" style="text-align:center; max-width:520px; margin:0 auto 1rem;">
+    <div class="section-tag" style="justify-content:center;">Dla kogo</div>
+    <h2 class="section-title">Pomagamy klientom<br><em>tych firm</em></h2>
+  </div>
+  <div class="forwhom-grid reveal">
+    <div class="forwhom-card">
+      <div class="fw-logo">🏦</div>
+      <div class="fw-name">Provident</div>
+      <div class="fw-desc">Jeden z największych parabanków w Polsce — umowy często zawierają zawyżone prowizje i opłaty obsługowe.</div>
+    </div>
+    <div class="forwhom-card">
+      <div class="fw-logo">⚡</div>
+      <div class="fw-name">Vivus / Wonga</div>
+      <div class="fw-desc">Chwilówki online z wysokim RRSO — wiele zapisów może być zakwestionowanych jako niezgodne z prawem.</div>
+    </div>
+    <div class="forwhom-card">
+      <div class="fw-logo">🏛️</div>
+      <div class="fw-name">SKOK-i</div>
+      <div class="fw-desc">Spółdzielcze kasy oszczędnościowe — podobne mechanizmy ukrytych kosztów jak w przypadku parabanków.</div>
+    </div>
+    <div class="forwhom-card">
+      <div class="fw-logo">💳</div>
+      <div class="fw-name">Ferratum / Creditstar</div>
+      <div class="fw-desc">Zagraniczne firmy pożyczkowe działające w Polsce — często stosują zapisy niezgodne z polskim prawem.</div>
+    </div>
+    <div class="forwhom-card">
+      <div class="fw-logo">📱</div>
+      <div class="fw-name">Inne chwilówki online</div>
+      <div class="fw-desc">NetCredit, Bocian, Monedo i inne — jeśli masz umowę z dowolnym parabankiem, warto ją sprawdzić.</div>
+    </div>
+    <div class="forwhom-card" style="border-color:rgba(245,158,11,.3); background:rgba(245,158,11,.04);">
+      <div class="fw-logo">❓</div>
+      <div class="fw-name">Nie wiesz czy Twoja firma?</div>
+      <div class="fw-desc">Napisz do nas — sprawdzimy Twoją umowę bezpłatnie i powiemy szczerze czy możemy pomóc.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WYNIKI -->
+<section id="wyniki">
+  <div class="reveal" style="text-align:center; max-width:520px; margin:0 auto 1rem;">
+    <div class="section-tag" style="justify-content:center;">Wyniki</div>
+    <h2 class="section-title">Realne <em>oszczędności</em><br>naszych klientów</h2>
+  </div>
+  <div class="results-grid">
+    <div class="result-card reveal">
+      <div class="result-company">Provident · Dług konsumencki</div>
+      <div class="result-before">Żądana kwota</div>
+      <div class="result-before-val">11 200 zł</div>
+      <div class="result-arrow">↓</div>
+      <div class="result-after">Po naszej interwencji</div>
+      <div class="result-after-val">3 800 zł</div>
+      <div class="result-saving">Oszczędność: <strong>7 400 zł</strong></div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-company">Vivus · Chwilówka online</div>
+      <div class="result-before">Żądana kwota</div>
+      <div class="result-before-val">4 900 zł</div>
+      <div class="result-arrow">↓</div>
+      <div class="result-after">Po naszej interwencji</div>
+      <div class="result-after-val">1 200 zł</div>
+      <div class="result-saving">Oszczędność: <strong>3 700 zł</strong></div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-company">SKOK · Pożyczka gotówkowa</div>
+      <div class="result-before">Żądana kwota</div>
+      <div class="result-before-val">18 500 zł</div>
+      <div class="result-arrow">↓</div>
+      <div class="result-after">Po naszej interwencji</div>
+      <div class="result-after-val">9 100 zł</div>
+      <div class="result-saving">Oszczędność: <strong>9 400 zł</strong></div>
+    </div>
+  </div>
+  <p class="results-note reveal">* Dane poglądowe obrazujące typowe przypadki. Wyniki indywidualne zależą od treści umowy.</p>
+</section>
+
+<!-- CENNIK -->
+<section id="cennik">
+  <div class="reveal" style="text-align:center; max-width:480px; margin:0 auto 1rem;">
+    <div class="section-tag" style="justify-content:center;">Cennik</div>
+    <h2 class="section-title"><em>Płacisz tylko</em><br>gdy wygrasz</h2>
+  </div>
+  <div class="pricing-box reveal">
+    <div class="pricing-header">
+      <div class="pricing-tag">Model success fee</div>
+      <div class="pricing-main">0 zł <span>z góry</span></div>
+      <div class="pricing-sub">Wynagrodzenie tylko od osiągniętej oszczędności</div>
+    </div>
+    <div class="pricing-body">
+      <div class="pricing-items">
+        <div class="pi"><span class="pi-check">✓</span><div><strong>Bezpłatna analiza umowy</strong> — sprawdzamy każdy zapis bez żadnych opłat</div></div>
+        <div class="pi"><span class="pi-check">✓</span><div><strong>Bezpłatna konsultacja</strong> — oceniamy szanse i tłumaczymy co znaleźliśmy</div></div>
+        <div class="pi"><span class="pi-check">✓</span><div><strong>Profesjonalne pismo do parabanku</strong> — piszemy w Twoim imieniu</div></div>
+        <div class="pi"><span class="pi-check">✓</span><div><strong>Płacisz tylko gdy wygrasz</strong> — wynagrodzenie to % od uzyskanej oszczędności</div></div>
+        <div class="pi"><span class="pi-check">✓</span><div><strong>Zero ryzyka</strong> — jeśli nie uda się obniżyć długu, nie płacisz nic</div></div>
+      </div>
+      <a href="#formularz" class="btn-gold pricing-cta">Sprawdź swoją umowę bezpłatnie →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="reveal" style="text-align:center; max-width:480px; margin:0 auto 1rem;">
+    <div class="section-tag" style="justify-content:center;">FAQ</div>
+    <h2 class="section-title">Najczęściej<br><em>zadawane pytania</em></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q">Czy naprawdę nic nie płacę z góry? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Tak — analiza umowy i konsultacja są całkowicie bezpłatne. Wynagrodzenie pobieramy wyłącznie w przypadku sukcesu, jako procent od kwoty, o którą udało się obniżyć Twój dług.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Jak długo trwa cały proces? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Analiza umowy zajmuje nam zazwyczaj 24–48 godzin. Po jej przeprowadzeniu kontaktujemy się z Tobą i informujemy o wynikach. Pismo do parabanku wysyłamy niezwłocznie po Twojej akceptacji.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Co jeśli mam już wezwanie do zapłaty lub sprawę w sądzie? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Skontaktuj się z nami jak najszybciej — im wcześniej tym lepiej. Nawet na etapie windykacji lub postępowania sądowego analiza umowy może ujawnić zapisy, które znacząco zmienią sytuację.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Jakie dokumenty muszę przesłać? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Wystarczy skan lub zdjęcie umowy pożyczkowej oraz ewentualnych aneksów i harmonogramów spłat. Im kompletniejsza dokumentacja, tym dokładniejsza analiza.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Czy każda umowa parabanku zawiera błędy? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Nie każda, ale statystycznie większość umów zawieranych przez parabanki zawiera co najmniej jeden zapis, który można zakwestionować. Dlatego warto sprawdzić — analiza jest bezpłatna i nic nie ryzykujesz.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARZ -->
+<section id="formularz">
+  <div class="form-layout">
+    <div class="form-intro reveal">
+      <div class="section-tag">Bezpłatna analiza</div>
+      <h2 class="section-title">Sprawdź swoją<br>umowę <em>teraz</em></h2>
+      <p>Wypełnij formularz — oddzwonimy lub napiszemy w ciągu 24 godzin. Analiza jest całkowicie bezpłatna i niezobowiązująca.</p>
+      <div class="form-guarantees">
+        <div class="fg-item"><span class="fg-icon">🔒</span>Twoje dane są bezpieczne i poufne</div>
+        <div class="fg-item"><span class="fg-icon">⚡</span>Odpowiadamy w ciągu 24 godzin</div>
+        <div class="fg-item"><span class="fg-icon">✅</span>Zero zobowiązań — decyzja należy do Ciebie</div>
+        <div class="fg-item"><span class="fg-icon">💰</span>Płacisz tylko jeśli wygramy</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="fg">
+            <label>Imię i nazwisko</label>
+            <input type="text" placeholder="Jan Kowalski">
+          </div>
+          <div class="fg">
+            <label>Numer telefonu</label>
+            <input type="tel" placeholder="+48 500 000 000">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Nazwa parabanku / pożyczkodawcy</label>
+          <select>
+            <option value="">Wybierz firmę...</option>
+            <option>Provident</option>
+            <option>Vivus</option>
+            <option>Wonga</option>
+            <option>SKOK</option>
+            <option>Ferratum</option>
+            <option>NetCredit</option>
+            <option>Inna firma</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Przybliżona kwota długu (zł)</label>
+          <input type="text" placeholder="np. 8000">
+        </div>
+        <div class="fg">
+          <label>Dodatkowe informacje (opcjonalnie)</label>
+          <textarea placeholder="Opisz krótko swoją sytuację — czy masz wezwanie do zapłaty, od jak dawna trwa sprawa itp."></textarea>
+        </div>
+        <button class="btn-submit" onclick="alert('Dziękujemy! Odezwiemy się w ciągu 24 godzin. ⚖️')">Wyślij i otrzymaj bezpłatną analizę →</button>
+        <p class="form-note">Przesyłając formularz wyrażasz zgodę na kontakt telefoniczny lub e-mailowy w sprawie analizy umowy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-text">Wolny <span>od Długu</span></div>
+  <p>© 2025 · Analiza umów pożyczkowych · Success fee</p>
+  <p style="font-size:.65rem; color:rgba(148,163,184,.2);">Strona stworzona przez <a href="#" style="color:rgba(37,99,235,.3);">MK Web</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav shrink
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding = window.scrollY > 60 ? '.7rem 3rem' : '1.1rem 3rem';
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
