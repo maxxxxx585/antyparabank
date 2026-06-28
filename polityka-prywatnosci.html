@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polityka prywatności | Antyparabank.pl</title>
+<meta name="description" content="Polityka prywatności i informacja o przetwarzaniu danych osobowych — Antyparabank.pl, Kredyty Partnerskie Sp. z o.o.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMwYjExMjAiLz48dGV4dCB4PSIzMiIgeT0iNDUiIGZvbnQtc2l6ZT0iMzIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKame+4jzwvdGV4dD48L3N2Zz4=">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:    #0b1120;
+  --navy2:   #111827;
+  --accent:  #2563eb;
+  --gold:    #f59e0b;
+  --white:   #f8fafc;
+  --muted:   #94a3b8;
+  --success: #10b981;
+  --red:     #ef4444;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.65;
+}
+a { color: var(--accent); }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  padding: 1.1rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(11,17,32,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(37,99,235,.15);
+}
+.nav-logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+.nav-logo-icon {
+  width: 34px; height: 34px; border-radius: 6px;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.nav-logo-text { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+.nav-logo-text span { color: var(--gold); }
+.nav-back {
+  font-size: .82rem; color: var(--muted); text-decoration: none;
+  border: 1px solid rgba(148,163,184,.25); border-radius: 999px;
+  padding: .5rem 1.1rem; transition: border-color .2s, color .2s;
+}
+.nav-back:hover { color: var(--white); border-color: var(--accent); }
+
+/* CONTENT */
+main {
+  max-width: 760px; margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+.doc-header { margin-bottom: 2.5rem; }
+.doc-tag {
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .8rem; display: block;
+}
+h1 { font-size: 2rem; font-weight: 800; margin-bottom: .6rem; }
+.doc-updated { color: var(--muted); font-size: .85rem; }
+
+h2 {
+  font-size: 1.25rem; font-weight: 700; margin: 2.4rem 0 .9rem;
+  color: var(--white);
+  padding-bottom: .5rem; border-bottom: 1px solid rgba(148,163,184,.15);
+}
+h3 { font-size: 1.02rem; font-weight: 700; margin: 1.4rem 0 .5rem; color: var(--white); }
+p { margin-bottom: 1rem; color: #cbd5e1; }
+ul { margin: 0 0 1rem 1.3rem; color: #cbd5e1; }
+li { margin-bottom: .45rem; }
+strong { color: var(--white); font-weight: 600; }
+
+.info-box {
+  background: var(--navy2);
+  border: 1px solid rgba(148,163,184,.15);
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  margin: 1.4rem 0;
+  font-size: .92rem;
+}
+.info-box p:last-child { margin-bottom: 0; }
+
+table {
+  width: 100%; border-collapse: collapse; margin: 1.2rem 0;
+  font-size: .88rem;
+}
+th, td {
+  text-align: left; padding: .7rem .9rem;
+  border-bottom: 1px solid rgba(148,163,184,.15);
+  color: #cbd5e1;
+}
+th { color: var(--white); font-weight: 600; background: rgba(148,163,184,.06); }
+
+.contact-block {
+  background: linear-gradient(135deg, #1e3a8a, var(--navy2));
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  margin-top: 2.5rem;
+}
+.contact-block h2 { border-bottom: none; margin-top: 0; }
+.contact-block a { color: var(--gold); font-weight: 600; text-decoration: none; }
+.contact-block a:hover { text-decoration: underline; }
+
+footer {
+  background: #070b14;
+  padding: 2rem 3rem;
+  text-align: center;
+  border-top: 1px solid rgba(37,99,235,.1);
+  font-size: .78rem; color: rgba(148,163,184,.5);
+}
+footer a { color: rgba(148,163,184,.7); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 640px) {
+  nav { padding: .9rem 1.2rem; }
+  .nav-logo-text { font-size: 1.05rem; }
+  main { padding: 2.4rem 1.2rem 3.5rem; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">⚖️</div>
+    <div class="nav-logo-text">Anty<span>parabank</span></div>
+  </a>
+  <a href="index.html" class="nav-back">← Wróć do strony głównej</a>
+</nav>
+
+<main>
+  <div class="doc-header">
+    <span class="doc-tag">Dokument prawny</span>
+    <h1>Polityka prywatności</h1>
+    <p class="doc-updated">Ostatnia aktualizacja: 28 czerwca 2026 r.</p>
+  </div>
+
+  <p>Niniejsza Polityka prywatności wyjaśnia, jakie dane osobowe przetwarzamy w związku z prowadzeniem serwisu Antyparabank.pl oraz świadczeniem usług polegających na bezpłatnej analizie umów pożyczkowych i kredytowych, pomocy w upadłości konsumenckiej oraz dochodzeniu roszczeń odszkodowawczych, a także jakie prawa przysługują Ci w związku z przetwarzaniem Twoich danych.</p>
+
+  <h2>1. Kto jest administratorem Twoich danych</h2>
+  <div class="info-box">
+    <p><strong>Kredyty Partnerskie Spółka z ograniczoną odpowiedzialnością</strong><br>
+    ul. Topolowa 34, 62-571 Stare Miasto<br>
+    NIP 665 299 01 96 · REGON 302216887 · KRS 0000429442</p>
+    <p>Kontakt w sprawach ochrony danych osobowych: <a href="mailto:m.wadelski@op.pl">m.wadelski@op.pl</a>, tel. <a href="tel:607200248">607 200 248</a>.</p>
+  </div>
+
+  <h2>2. Jakie dane przetwarzamy</h2>
+  <p>Nie posiadamy na stronie formularza, który automatycznie wysyłałby dane do naszej bazy — kontakt inicjujesz samodzielnie telefonicznie lub mailowo. W związku z tym przetwarzamy dane, które przekazujesz nam dobrowolnie w trakcie takiego kontaktu, w szczególności:</p>
+  <ul>
+    <li>imię i nazwisko,</li>
+    <li>numer telefonu i adres e-mail,</li>
+    <li>treść korespondencji (e-maile, notatki z rozmów telefonicznych),</li>
+    <li>dokumenty przesłane w celu analizy — np. skan lub zdjęcie umowy pożyczkowej, kredytowej, harmonogramów spłat, korespondencji z wierzycielem lub komornikiem,</li>
+    <li>informacje o Twojej sytuacji finansowej i zadłużeniu, w zakresie niezbędnym do przeprowadzenia analizy prawnej.</li>
+  </ul>
+  <p>Strona internetowa sama w sobie nie korzysta z plików cookie śledzących ani z zewnętrznych narzędzi analitycznych (np. Google Analytics) — nie zbiera więc danych o Twoim zachowaniu w przeglądarce.</p>
+
+  <h2>3. Cel i podstawa prawna przetwarzania</h2>
+  <table>
+    <tr><th>Cel przetwarzania</th><th>Podstawa prawna (RODO)</th></tr>
+    <tr><td>Przeprowadzenie bezpłatnej analizy umowy lub sytuacji prawnej</td><td>Art. 6 ust. 1 lit. b — działania przed zawarciem umowy, na Twoje żądanie</td></tr>
+    <tr><td>Realizacja zawartej umowy o świadczenie usług prawno-finansowych</td><td>Art. 6 ust. 1 lit. b — wykonanie umowy</td></tr>
+    <tr><td>Kontakt telefoniczny i mailowy w sprawie Twojego zgłoszenia</td><td>Art. 6 ust. 1 lit. a i f — zgoda oraz nasz uzasadniony interes w udzieleniu odpowiedzi</td></tr>
+    <tr><td>Dochodzenie roszczeń lub obrona przed roszczeniami</td><td>Art. 6 ust. 1 lit. f — uzasadniony interes administratora</td></tr>
+    <tr><td>Wypełnienie obowiązków księgowych i podatkowych</td><td>Art. 6 ust. 1 lit. c — obowiązek prawny</td></tr>
+  </table>
+
+  <h2>4. Okres przechowywania danych</h2>
+  <p>Dane przechowujemy nie dłużej, niż jest to konieczne do realizacji celów, dla których zostały zebrane:</p>
+  <ul>
+    <li>dane osób, które skontaktowały się z nami, ale nie podjęły dalszej współpracy — do <strong>12 miesięcy</strong> od ostatniego kontaktu, chyba że wcześniej zażądasz ich usunięcia,</li>
+    <li>dane związane z realizacją zawartej umowy — przez czas trwania współpracy oraz okres niezbędny do obrony przed roszczeniami (zasadniczo do <strong>6 lat</strong> po jej zakończeniu, zgodnie z ogólnymi terminami przedawnienia roszczeń cywilnych),</li>
+    <li>dokumenty rozliczeniowe — przez okres wymagany przepisami podatkowymi i rachunkowymi (zasadniczo 5 lat).</li>
+  </ul>
+
+  <h2>5. Komu przekazujemy dane</h2>
+  <p>Twoje dane mogą być przekazywane:</p>
+  <ul>
+    <li>podmiotom świadczącym dla nas usługi wsparcia (np. hosting poczty elektronicznej, hosting strony internetowej) — wyłącznie w zakresie niezbędnym do świadczenia tych usług, na podstawie umów powierzenia przetwarzania danych,</li>
+    <li>sądom, kancelariom komorniczym i innym organom — jeśli jest to niezbędne w toku prowadzonej sprawy i wynika z udzielonego nam upoważnienia,</li>
+    <li>podmiotom uprawnionym na podstawie obowiązujących przepisów prawa (np. organom podatkowym).</li>
+  </ul>
+  <p>Nie sprzedajemy Twoich danych osobowych innym firmom i nie wykorzystujemy ich do celów marketingowych bez Twojej odrębnej, wyraźnej zgody.</p>
+
+  <h2>6. Twoje prawa</h2>
+  <p>W związku z przetwarzaniem danych osobowych przysługuje Ci prawo do:</p>
+  <ul>
+    <li><strong>dostępu</strong> do swoich danych oraz uzyskania ich kopii,</li>
+    <li><strong>sprostowania</strong> (poprawienia) danych, jeśli są nieprawidłowe lub niekompletne,</li>
+    <li><strong>usunięcia</strong> danych ("prawo do bycia zapomnianym"), gdy nie są już niezbędne do celów, dla których zostały zebrane,</li>
+    <li><strong>ograniczenia przetwarzania</strong> w określonych przypadkach,</li>
+    <li><strong>przenoszenia danych</strong> do innego administratora,</li>
+    <li><strong>wniesienia sprzeciwu</strong> wobec przetwarzania danych opartego na naszym uzasadnionym interesie,</li>
+    <li><strong>wycofania zgody</strong> w każdym momencie, jeśli przetwarzanie odbywa się na jej podstawie — bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej wycofaniem,</li>
+    <li><strong>wniesienia skargi</strong> do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa), jeśli uznasz, że przetwarzanie Twoich danych narusza przepisy RODO.</li>
+  </ul>
+  <p>Aby skorzystać z powyższych praw, skontaktuj się z nami telefonicznie lub mailowo — dane kontaktowe znajdziesz w punkcie 1 oraz w sekcji kontaktowej na końcu tej strony.</p>
+
+  <h2>7. Bezpieczeństwo danych</h2>
+  <p>Stosujemy odpowiednie środki techniczne i organizacyjne, aby chronić Twoje dane przed nieuprawnionym dostępem, utratą lub zniszczeniem — w tym ograniczony dostęp do dokumentacji wyłącznie dla osób zajmujących się Twoją sprawą oraz szyfrowane połączenie HTTPS na stronie internetowej.</p>
+
+  <h2>8. Pliki cookie</h2>
+  <p>Strona Antyparabank.pl jest zaprojektowana jako w pełni samodzielny dokument i nie wykorzystuje plików cookie do śledzenia użytkowników, profilowania ani celów marketingowych. Jeśli w przyszłości wprowadzimy narzędzia korzystające z plików cookie (np. statystyki odwiedzin), poinformujemy o tym w zaktualizowanej wersji niniejszej polityki oraz, jeśli będzie to wymagane, poprosimy o Twoją zgodę.</p>
+
+  <h2>9. Zmiany w polityce prywatności</h2>
+  <p>Niniejsza polityka może być okresowo aktualizowana, np. w związku ze zmianą przepisów lub zakresu świadczonych usług. Aktualna wersja jest zawsze dostępna na tej stronie, a data ostatniej aktualizacji widoczna jest na początku dokumentu.</p>
+
+  <div class="contact-block">
+    <h2>Masz pytania dotyczące swoich danych?</h2>
+    <p>Skontaktuj się z nami — odpowiemy szczerze i wyjaśnimy, jak przetwarzamy Twoje dane w Twojej konkretnej sprawie.</p>
+    <p>📞 <a href="tel:607200248">607 200 248</a> &nbsp;·&nbsp; ✉️ <a href="mailto:m.wadelski@op.pl">m.wadelski@op.pl</a></p>
+  </div>
+</main>
+
+<footer>
+  © 2026 Antyparabank.pl · Kredyty Partnerskie Sp. z o.o. · <a href="index.html">Strona główna</a>
+</footer>
+
+</body>
+</html>
