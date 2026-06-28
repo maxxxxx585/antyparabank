@@ -172,6 +172,7 @@ nav {
 }
 .hero-visual {
   animation: fadeUp .8s .3s ease both;
+  margin-top: -2.5rem;
 }
 .hero-visual-frame {
   border-radius: 16px;
@@ -694,6 +695,22 @@ section { padding: 6rem 3rem; }
 .cc-value { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); }
 .cc-sub { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
 
+.company-info {
+  margin-top: 1.5rem;
+  padding: 1.4rem 1.6rem;
+  background: var(--navy);
+  border: 1px solid rgba(148,163,184,.15);
+  border-radius: 14px;
+  font-size: .78rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.company-info strong { color: var(--white); font-weight: 600; }
+.company-info .ci-title {
+  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .6rem; display: block;
+}
+
 /* FOOTER */
 footer {
   background: #070b14;
@@ -740,7 +757,7 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
   .nav-logo-text { font-size: 1.05rem; }
   #hero { padding: 6rem 1.2rem 4rem; }
   #hero .hero-grid-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero-visual { max-width: 100%; }
+  .hero-visual { max-width: 100%; margin-top: 0; }
   section { padding: 4rem 1.2rem; }
   .trust-bar { gap: 1.2rem; padding: 1rem 1.2rem; }
   .trust-divider { display: none; }
@@ -775,6 +792,7 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
   </div>
   <ul class="nav-links">
     <li><a href="#o-nas">O nas</a></li>
+    <li><a href="#uslugi">Nasze usługi</a></li>
     <li class="nav-has-dropdown" tabindex="0">
       <span class="nav-dropdown-trigger">Jak działamy <span class="caret">▾</span></span>
       <ul class="nav-dropdown">
@@ -784,8 +802,8 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
       </ul>
     </li>
     <li><a href="#wyniki">Wyroki</a></li>
-    <li><a href="#faq">FAQ</a></li>
     <li><a href="#cennik">Cennik</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#formularz">Kontakt</a></li>
   </ul>
   <a href="#formularz" class="nav-cta">Bezpłatna analiza →</a>
@@ -799,11 +817,11 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
     <div class="hero-inner">
       <div class="hero-badge">⚖️ Pożyczki · Upadłość konsumencka · Odszkodowania</div>
       <h1 class="hero-title">
-        Masz dług<br>w <span class="highlight">parabanku?</span><br>
-        Możliwe, że jesteś<br>winien znacznie <span class="highlight">mniej</span>
+        Masz dług<br>w banku lub <span class="highlight">parabanku?</span><br>
+        Możliwe, że już <span class="highlight">go nadpłacasz!</span>
       </h1>
       <p class="hero-sub">
-        <strong>Analizujemy Twoją umowę bezpłatnie</strong> — pożyczkową, kredytową, również walutową (CHF). Za dalsze czynności płacisz tylko, jeśli wygramy. <strong>Walczymy o zmniejszenie lub całkowite umorzenie długu.</strong>
+        Analizujemy bezpłatnie Twoją umowę pożyczkową, kredytową (również walutową). Za dalsze czynności płacisz tylko jeśli wygramy. Walczymy o zmniejszenie lub całkowite umorzenie długu. Jeśli nie masz umowy, to pomożemy Ci ją odzyskać.
       </p>
       <div class="hero-proof">
         <div class="proof-item"><div class="proof-dot"></div><strong>Zero opłat z góry</strong></div>
@@ -856,7 +874,7 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
     <div class="usluga-card reveal" id="usluga-pozyczki">
       <div class="usluga-icon">⚖️</div>
       <div class="usluga-name">Wolność od długu — analiza umów pożyczek i kredytów</div>
-      <div class="usluga-desc">Sprawdzamy umowy pożyczek, kredytów konsumenckich i kredytów frankowych pod kątem klauzul abuzywnych, zawyżonych prowizji i przekroczonych limitów odsetek. Piszemy w Twoim imieniu i walczymy o zmniejszenie lub umorzenie długu.</div>
+      <div class="usluga-desc">Sprawdzamy umowy pożyczek, kredytów konsumenckich i kredytów frankowych pod kątem klauzul abuzywnych, zawyżonych prowizji i przekroczonych limitów odsetek. Piszemy w Twoim imieniu i walczymy, aby Twój kredyt był za darmo, a nadpłaty zwrócone.</div>
       <a href="#jd-pozyczki" class="usluga-link">Sprawdź jak to działa →</a>
     </div>
     <div class="usluga-card reveal" id="usluga-upadlosc">
@@ -890,8 +908,8 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
       <div class="step-card reveal">
         <div class="step-num">1</div>
         <div class="step-icon">📋</div>
-        <div class="step-title">Wyślij umowę</div>
-        <div class="step-text">Wypełnij formularz i prześlij skan lub zdjęcie swojej umowy pożyczkowej lub kredytowej. To zajmuje 2 minuty.</div>
+        <div class="step-title">Zadzwoń lub napisz</div>
+        <div class="step-text">Prześlij skan lub zdjęcie umowy, a jeśli jej nie masz to pomożemy Ci ją bezpłatnie odzyskać.</div>
       </div>
       <div class="step-card reveal">
         <div class="step-num">2</div>
@@ -999,22 +1017,21 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
           <span class="vs-val">5 638,15 zł</span>
         </div>
         <div class="vs-row">
-          <span class="vs-label">Żądanie powoda (Profi Credit)</span>
-          <span class="vs-val red">5 638,15 zł</span>
+          <span class="vs-label">Żądanie firmy pożyczkowej wraz z kosztami procesu</span>
+          <span class="vs-val red">8 252,15 zł</span>
         </div>
         <div class="vs-row">
-          <span class="vs-label">Zasądzone przez sąd (do zapłaty)</span>
+          <span class="vs-label">Zasądzone przez sąd (do zapłaty przez naszego klienta)</span>
           <span class="vs-val neutral">968,04 zł</span>
         </div>
         <div class="vs-row vs-row-highlight">
           <span class="vs-label">Korzyść klienta</span>
-          <span class="vs-val green">+ 4 670,11 zł</span>
+          <span class="vs-val green">+ 7 284,11 zł</span>
         </div>
       </div>
       <div class="verdict-summary">
-        Sąd <strong>oddalił powództwo w pozostałym zakresie</strong> — z żądanych 5 638,15 zł pozwany musiał zapłacić jedynie 968,04 zł, czyli o 4 670,11 zł mniej. Dodatkowo sąd nie obciążył pozwanej obowiązkiem zwrotu kosztów procesu, a powodowi nakazał ściągnięcie 1 837,62 zł na rzecz Skarbu Państwa tytułem nieuiszczonych kosztów sądowych.
+        Sąd <strong>oddalił powództwo w pozostałym zakresie</strong> — z żądanych 8 252,15 zł nasz klient musiał zapłacić jedynie 968,04 zł, czyli o 7 284,11 zł mniej. Dodatkowo sąd nie obciążył naszego klienta kosztami procesu w kwocie 2 614 zł, a parabank musiał zapłacić 1 837,62 zł na rzecz Skarbu Państwa.
       </div>
-      <div class="verdict-risk-note"><span class="vrn-star">*</span><div>Gdyby ta sprawa zakończyła się przegraną, dług powiększyłby się jeszcze o <strong>400 zł kosztów sądowych</strong> i <strong>1 800 zł kosztów zastępstwa procesowego</strong> — to realna skala ryzyka, jeśli nie zareagujesz na pozew.</div></div>
       <a href="#" data-pdf-id="wyrok1" data-download-name="wyrok-sadowy-1.pdf" class="verdict-pdf-btn pdf-lazy-link">📄 Zobacz pełny wyrok (PDF) →</a>
     </div>
 
@@ -1028,31 +1045,30 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
       </div>
       <div class="verdict-stats">
         <div class="vs-row">
-          <span class="vs-label">Wartość przedmiotu sporu</span>
-          <span class="vs-val">2 092,62 zł</span>
+          <span class="vs-label">Wartość przedmiotu sporu wraz z pozwem wzajemnym</span>
+          <span class="vs-val">2 833,55 zł</span>
         </div>
         <div class="vs-row">
-          <span class="vs-label">Żądanie powoda (Everest Finanse)</span>
-          <span class="vs-val red">2 092,62 zł</span>
+          <span class="vs-label">Żądanie firmy pożyczkowej wraz z kosztami procesu</span>
+          <span class="vs-val red">3 399,62 zł</span>
         </div>
         <div class="vs-row">
-          <span class="vs-label">Zasądzone przez sąd (do zapłaty)</span>
+          <span class="vs-label">Zasądzone przez sąd (do zapłaty przez naszego klienta)</span>
           <span class="vs-val neutral">0 zł</span>
         </div>
         <div class="vs-row vs-row-highlight">
           <span class="vs-label">Korzyść klienta</span>
-          <span class="vs-val green">+ 3 750,55 zł</span>
+          <span class="vs-val green">+ 4 140,55 zł</span>
         </div>
       </div>
       <div class="verdict-summary">
-        Sąd <strong>całkowicie oddalił powództwo</strong> firmy pożyczkowej — klientka nie zapłaciła nic z żądanych 2 092,62 zł. Co więcej, w wyniku powództwa wzajemnego sąd zasądził od Everest Finanse na rzecz naszej klientki 740,93 zł wraz z odsetkami oraz 917 zł zwrotu kosztów procesu — klientka nie tylko nic nie zapłaciła, ale <strong>otrzymała zwrot pieniędzy</strong>.
+        Sąd <strong>całkowicie oddalił powództwo</strong> firmy pożyczkowej — nasz klient nie zapłacił nic z żądanych 3 399,62 zł. Co więcej, w wyniku powództwa wzajemnego sąd zasądził od firmy Everest na rzecz naszego klienta 740,93 zł wraz z odsetkami oraz kwotę 917 zł zwrotu kosztów procesu. Klient nie tylko nic nie zapłacił, ale <strong>otrzymał jeszcze zwrot pieniędzy</strong>.
       </div>
-      <div class="verdict-risk-note"><span class="vrn-star">*</span><div>Gdyby ta sprawa zakończyła się przegraną, dług powiększyłby się jeszcze o <strong>200 zł kosztów sądowych</strong> i <strong>900 zł kosztów zastępstwa procesowego</strong> — to realna skala ryzyka, jeśli nie zareagujesz na pozew.</div></div>
       <a href="#" data-pdf-id="wyrok2" data-download-name="wyrok-sadowy-2.pdf" class="verdict-pdf-btn pdf-lazy-link">📄 Zobacz pełny wyrok (PDF) →</a>
     </div>
 
   </div>
-  <p class="verdict-disclaimer reveal">Powyższe wyroki dotyczą konkretnych, zakończonych spraw. Każda sprawa jest indywidualna — wynik zależy od treści konkretnej umowy oraz okoliczności sprawy. Dane osobowe stron i sędziów zostały zanonimizowane z poszanowaniem prywatności uczestników postępowania.<br><br>* Brak reakcji na pozew zwykle kończy się przegraną sprawą — a wtedy do długu dolicza się jeszcze koszty sądowe i koszty zastępstwa procesowego strony powodowej. Realna kwota do zapłaty w toku egzekucji potrafi być znacznie wyższa niż sama pierwotna wierzytelność.</p>
+  <p class="verdict-disclaimer reveal">Powyższe wyroki dotyczą konkretnych, zakończonych spraw. Każda sprawa jest indywidualna — wynik zależy od treści konkretnej umowy oraz okoliczności sprawy. Dane osobowe stron i sędziów zostały zanonimizowane z poszanowaniem prywatności uczestników postępowania.</p>
 </section>
 
 <!-- CENNIK -->
@@ -1073,7 +1089,6 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
         <div class="pi"><span class="pi-check">✓</span><div><strong>Bezpłatna konsultacja</strong> — oceniamy szanse i tłumaczymy, co znaleźliśmy</div></div>
         <div class="pi"><span class="pi-check">✓</span><div><strong>Działamy w Twoim imieniu</strong> — prowadzimy sprawę po podpisaniu współpracy</div></div>
         <div class="pi"><span class="pi-check">✓</span><div><strong>Płacisz tylko gdy wygrasz</strong> — wynagrodzenie to % od uzyskanej oszczędności lub odszkodowania</div></div>
-        <div class="pi"><span class="pi-check">✓</span><div><strong>Zero ryzyka</strong> — jeśli nie uda się obniżyć długu, nie płacisz nic</div></div>
       </div>
       <div style="font-size:.78rem; color:var(--muted); line-height:1.6; padding-top:.4rem; margin-top:-.6rem;">Dla wniosków o upadłość konsumencką wynagrodzenie ustalamy indywidualnie, w zależności od zakresu pracy.</div>
     </div>
@@ -1123,10 +1138,6 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
       <div class="faq-q">Czym różni się oddłużenie od upadłości konsumenckiej? <span class="faq-icon">+</span></div>
       <div class="faq-a">Oddłużenie przez analizę umowy polega na obniżeniu lub umorzeniu konkretnego długu dzięki wadliwym zapisom w umowie. Upadłość konsumencka to formalne postępowanie sądowe, które może objąć całość zadłużenia, gdy renegocjacja pojedynczych umów nie wystarcza. Po bezpłatnej analizie doradzimy, które rozwiązanie jest dla Ciebie najbezpieczniejsze.</div>
     </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">Komornik już prowadzi egzekucję — czy coś da się jeszcze zrobić? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Tak, nawet na etapie egzekucji komorniczej warto sprawdzić umowę, na podstawie której wszczęto postępowanie. Jeśli zawiera klauzule niedozwolone lub błędy formalne, mamy podstawę do podjęcia działań ograniczających dalszą windykację. Im szybciej się zgłosisz, tym więcej opcji mamy do wykorzystania.</div>
-    </div>
   </div>
 </section>
 
@@ -1140,7 +1151,7 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
       <div class="form-guarantees">
         <div class="fg-item"><span class="fg-icon">🔒</span>Twoje dane są bezpieczne i poufne</div>
         <div class="fg-item"><span class="fg-icon">⚡</span>Odpowiadamy szybko, osobiście</div>
-        <div class="fg-item"><span class="fg-icon">✅</span>Zero zobowiązań — decyzja należy do Ciebie</div>
+        <div class="fg-item"><span class="fg-icon">✅</span>Zero zobowiązań – decyzja o współpracy zależy od Ciebie</div>
         <div class="fg-item"><span class="fg-icon">💰</span>Płacisz tylko jeśli wygramy</div>
       </div>
     </div>
@@ -1151,7 +1162,7 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
           <div>
             <div class="cc-label">Zadzwoń</div>
             <div class="cc-value">607 200 248</div>
-            <div class="cc-sub">Codziennie — porozmawiamy o Twojej sytuacji</div>
+            <div class="cc-sub">Porozmawiamy o Twojej sytuacji</div>
           </div>
         </a>
         <a href="mailto:m.wadelski@op.pl" class="contact-card">
@@ -1162,6 +1173,13 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
             <div class="cc-sub">Opisz sytuację, dołącz skan umowy — odezwiemy się</div>
           </div>
         </a>
+      </div>
+      <div class="company-info">
+        <span class="ci-title">Adres i dane firmy</span>
+        <strong>Kredyty Partnerskie Spółka z ograniczoną odpowiedzialnością</strong><br>
+        ul. Topolowa 34<br>
+        62-571 Stare Miasto<br>
+        NIP 665 299 01 96 · REGON 302216887 · KRS 0000429442
       </div>
     </div>
   </div>
@@ -1217,8 +1235,7 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
     {"@type":"Question","name":"Czy każda umowa parabanku zawiera błędy?","acceptedAnswer":{"@type":"Answer","text":"Nie każda, ale statystycznie większość umów zawieranych przez parabanki i firmy pożyczkowe zawiera co najmniej jeden zapis, który można zakwestionować jako klauzulę niedozwoloną."}},
     {"@type":"Question","name":"Czy można całkowicie umorzyć dług w parabanku?","acceptedAnswer":{"@type":"Answer","text":"W wielu przypadkach tak. Jeśli umowa zawiera klauzule abuzywne, zawyżone prowizje lub koszty pozaodsetkowe przekraczające limity ustawowe, dług może zostać znacząco obniżony, a niekiedy umorzony w całości."}},
     {"@type":"Question","name":"Mam kredyt frankowy (CHF) — czy też pomożecie?","acceptedAnswer":{"@type":"Answer","text":"Tak. Analizujemy umowy kredytów indeksowanych i denominowanych w CHF pod kątem klauzul przeliczeniowych i niedozwolonych zapisów, które mogą prowadzić do unieważnienia umowy lub jej odfrankowienia."}},
-    {"@type":"Question","name":"Czym różni się oddłużenie od upadłości konsumenckiej?","acceptedAnswer":{"@type":"Answer","text":"Oddłużenie przez analizę umowy obniża lub umarza konkretny dług dzięki wadliwym zapisom. Upadłość konsumencka to formalne postępowanie sądowe obejmujące całość zadłużenia, gdy renegocjacja pojedynczych umów nie wystarcza."}},
-    {"@type":"Question","name":"Komornik już prowadzi egzekucję — czy coś da się jeszcze zrobić?","acceptedAnswer":{"@type":"Answer","text":"Tak, nawet na etapie egzekucji komorniczej warto sprawdzić umowę, na podstawie której wszczęto postępowanie. Jeśli zawiera klauzule niedozwolone lub błędy formalne, mamy podstawę do podjęcia działań ograniczających dalszą windykację."}}
+    {"@type":"Question","name":"Czym różni się oddłużenie od upadłości konsumenckiej?","acceptedAnswer":{"@type":"Answer","text":"Oddłużenie przez analizę umowy obniża lub umarza konkretny dług dzięki wadliwym zapisom. Upadłość konsumencka to formalne postępowanie sądowe obejmujące całość zadłużenia, gdy renegocjacja pojedynczych umów nie wystarcza."}}
   ]
 }
 </script>
