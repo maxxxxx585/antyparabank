@@ -71,6 +71,7 @@ nav {
   border-bottom: 1px solid rgba(37,99,235,.15);
   transition: padding .3s;
 }
+nav.nav-scrolled { padding: .7rem 3rem; }
 .nav-logo {
   display: flex; align-items: center; gap: .7rem;
 }
@@ -762,6 +763,7 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
 /* RESPONSIVE */
 @media (max-width: 960px) {
   nav { padding: .9rem 1.2rem; gap: .8rem; }
+  nav.nav-scrolled { padding: .6rem 1.2rem; }
   .nav-links { display: none; }
   .nav-dropdown { display: none; }
   .nav-cta { padding: .55rem 1rem; font-size: .72rem; letter-spacing: .03em; white-space: nowrap; }
@@ -1221,10 +1223,23 @@ footer p { font-size: .72rem; color: rgba(148,163,184,.4); }
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Nav shrink
+  // Nav shrink (throttled, klasa CSS zamiast inline style — bez forced reflow)
+  const navEl = document.querySelector('nav');
+  let navIsScrolled = false;
+  let navTicking = false;
   window.addEventListener('scroll', () => {
-    document.querySelector('nav').style.padding = window.scrollY > 60 ? '.7rem 3rem' : '1.1rem 3rem';
-  });
+    if (!navTicking) {
+      requestAnimationFrame(() => {
+        const shouldShrink = window.scrollY > 60;
+        if (shouldShrink !== navIsScrolled) {
+          navIsScrolled = shouldShrink;
+          navEl.classList.toggle('nav-scrolled', navIsScrolled);
+        }
+        navTicking = false;
+      });
+      navTicking = true;
+    }
+  }, { passive: true });
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q => {
